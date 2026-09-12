@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Niraj Chary</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f3ef;
+      color: #171717;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(244,243,239,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #ddd;
+    }
+
+    nav {
+      max-width: 1200px;
+      height: 75px;
+      margin: auto;
+      padding: 0 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9px;
+      background: #e43b25;
+      color: white;
+      font-size: 22px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: #e43b25;
+    }
+
+    .call-btn {
+      background: #171717;
+      color: white;
+      padding: 11px 18px;
+      border-radius: 7px;
+    }
+
+    .call-btn:hover {
+      background: #e43b25;
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: auto;
+      padding: 90px 25px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #ffe6e1;
+      color: #c92f1e;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 6vw, 80px);
+      line-height: .94;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #e43b25;
+    }
+
+    .hero p {
+      max-width: 530px;
+      color: #666;
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    .primary {
+      background: #e43b25;
+      color: white;
+    }
+
+    .primary:hover {
+      background: #c72d1c;
+      transform: translateY(-2px);
+    }
+
+    .secondary {
+      background: white;
+      border: 1px solid #ccc;
+    }
+
+    .secondary:hover {
+      border-color: #e43b25;
+      color: #e43b25;
+    }
+
+    .hero-image {
+      height: 480px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background: #222;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .5s;
+    }
+
+    .hero-image:hover img {
+      transform: scale(1.04);
+    }
+
+    .image-caption {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      padding: 18px;
+      background: rgba(0,0,0,.75);
+      color: white;
+      border-radius: 10px;
+    }
+
+    .image-caption strong {
+      display: block;
+      font-size: 18px;
+    }
+
+    .image-caption span {
+      color: #ccc;
+      font-size: 13px;
+    }
+
+    .products {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 25px;
+    }
+
+    .section-heading {
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      font-size: 42px;
+      letter-spacing: -1.5px;
+    }
+
+    .section-heading p {
+      color: #777;
+      margin-top: 7px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
+    }
+
+    .product {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 13px;
+      overflow: hidden;
+      transition: .25s;
+    }
+
+    .product:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(0,0,0,.08);
+    }
+
+    .product-image {
+      height: 210px;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .3s;
+    }
+
+    .product:hover img {
+      transform: scale(1.06);
+    }
+
+    .product-content {
+      padding: 18px;
+    }
+
+    .category {
+      color: #e43b25;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .product h3 {
+      margin: 7px 0;
+      font-size: 18px;
+    }
+
+    .product p {
+      color: #777;
+      font-size: 13px;
+      min-height: 40px;
+    }
+
+    .product-bottom {
+      margin-top: 17px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .add {
+      border: none;
+      background: #171717;
+      color: white;
+      padding: 9px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .add:hover {
+      background: #e43b25;
+    }
+
+    .services {
+      background: #171717;
+      color: white;
+      padding: 80px 25px;
+    }
+
+    .services-inner {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .services h2 {
+      font-size: 42px;
+      margin-bottom: 35px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .service {
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 12px;
+      padding: 30px;
+    }
+
+    .service-icon {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .service h3 {
+      margin-bottom: 8px;
+    }
+
+    .service p {
+      color: #aaa;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .location {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 25px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .location h2 {
+      font-size: 42px;
+      margin-bottom: 18px;
+    }
+
+    .location > div > p {
+      color: #666;
+      line-height: 1.7;
+    }
+
+    .contact {
+      margin: 30px 0;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .contact-icon {
+      min-width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: #ffe6e1;
+      color: #e43b25;
+    }
+
+    .contact-item p {
+      color: #666;
+      margin-top: 3px;
+    }
+
+    .map {
+      min-height: 380px;
+      overflow: hidden;
+      border-radius: 15px;
+      background: #ddd;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      border: 0;
+    }
+
+    footer {
+      background: #101010;
+      color: white;
+      padding: 30px 25px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    footer p {
+      color: #888;
+      font-size: 13px;
+    }
+
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 58px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #25D366;
+      color: white;
+      font-size: 27px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.2);
+      z-index: 999;
+    }
+
+    @media(max-width:900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 55px;
+      }
+
+      .hero-image {
+        height: 350px;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .location {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:600px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+        letter-spacing: -2px;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        flex-direction: column;
+      }
+
+      .section-heading h2,
+      .services h2,
+      .location h2 {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <a href="#" class="logo">
+        <span class="logo-icon">🔧</span>
+        Niraj Chary
+      </a>
+
+      <div class="nav-links">
+        <a href="#tools">Tools</a>
+        <a href="#services">Services</a>
+        <a href="#location">Visit</a>
+        <a href="tel:+15552104477" class="call-btn">
+          Call
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+
+    <div>
+      <span class="tag">
+        GARAGE TOOLS & PARTS COUNTER
+      </span>
+
+      <h1>
+        Every tool<br>
+        <span>in its place.</span>
+      </h1>
+
+      <p>
+        Heavy-duty wrenches, sockets and shop gear,
+        counter-priced and ready to ship the same day.
+        No fluff — just the bench.
+      </p>
+
+      <div class="buttons">
+        <a href="#tools" class="btn primary">
+          Browse Tools
+        </a>
+
+        <a href="tel:+15552104477" class="btn secondary">
+          Call the Counter
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img
+        src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=1200&q=85"
+        alt="Professional car garage"
+      >
+
+      <div class="image-caption">
+        <strong>
+          Professional Garage Equipment
+        </strong>
+
+        <span>
+          Built for mechanics. Ready for the job.
+        </span>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="products" id="tools">
+
+    <div class="section-heading">
+      <h2>On the shelf</h2>
+      <p>Counter prices</p>
+    </div>
+
+    <div class="products-grid">
+
+      <article class="product">
+        <div class="product-image">
+          <img
+            src="https://images.unsplash.com/photo-1581147036324-c1c9bf3b5e1a?auto=format&fit=crop&w=700&q=80"
+            alt="Chrome wrench set"
+          >
+        </div>
+
+        <div class="product-content">
+          <span class="category">Wrench</span>
+
+          <h3>10-Pc Chrome Wrench Set</h3>
+
+          <p>8–19 mm, SAE & metric</p>
+
+          <div class="product-bottom">
+            <span class="price">$42</span>
+
+            <button
+              class="add"
+              onclick="enquire('10-Pc Chrome Wrench Set')"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-image">
+          <img
+            src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=700&q=80"
+            alt="Socket and ratchet kit"
+          >
+        </div>
+
+        <div class="product-content">
+          <span class="category">Socket</span>
+
+          <h3>1/2" Drive Socket Kit</h3>
+
+          <p>26-piece, chrome-vanadium</p>
+
+          <div class="product-bottom">
+            <span class="price">$89</span>
+
+            <button
+              class="add"
+              onclick="enquire('1/2 Drive Socket Kit')"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-image">
+          <img
+            src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&w=700&q=80"
+            alt="Cordless impact driver"
+          >
+        </div>
+
+        <div class="product-content">
+          <span class="category">Power</span>
+
+          <h3>18V Cordless Impact</h3>
+
+          <p>2 batteries, charging case</p>
+
+          <div class="product-bottom">
+            <span class="price">$139</span>
+
+            <button
+              class="add"
+              onclick="enquire('18V Cordless Impact')"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-image">
+          <img
+            src="https://images.unsplash.com/photo-1632823469850-1f7c7e0c7d1a?auto=format&fit=crop&w=700&q=80"
+            alt="Vehicle lift"
+          >
+        </div>
+
+        <div class="product-content">
+          <span class="category">Lift</span>
+
+          <h3>2-Post Shop Lift</h3>
+
+          <p>8,000 lb rated, 12 ft</p>
+
+          <div class="product-bottom">
+            <span class="price">$1,240</span>
+
+            <button
+              class="add"
+              onclick="enquire('2-Post Shop Lift')"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="services" id="services">
+
+    <div class="services-inner">
+
+      <h2>Garage Services</h2>
+
+      <div class="service-grid">
+
+        <div class="service">
+          <div class="service-icon">🔧</div>
+
+          <h3>Tool Sales</h3>
+
+          <p>
+            Professional hand tools and workshop
+            equipment for mechanics and garages.
+          </p>
+        </div>
+
+        <div class="service">
+          <div class="service-icon">⚡</div>
+
+          <h3>Power Tools</h3>
+
+          <p>
+            Impact drivers, drills and
+            high-performance garage tools.
+          </p>
+        </div>
+
+        <div class="service">
+          <div class="service-icon">🚗</div>
+
+          <h3>Garage Equipment</h3>
+
+          <p>
+            Vehicle lifts, diagnostic equipment
+            and workshop machinery.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="location" id="location">
+
+    <div>
+
+      <h2>Come to the counter.</h2>
+
+      <p>
+        Stop by or call ahead — we'll have the
+        part on the shelf before you pull in.
+      </p>
+
+      <div class="contact">
+
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+
+          <div>
+            <strong>Address</strong>
+
+            <p>
+              418 Foundry Row,
+              Millhaven, OH 44012
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+
+          <div>
+            <strong>Phone</strong>
+
+            <p>+1 555-210-4477</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">🕒</div>
+
+          <div>
+            <strong>Hours</strong>
+
+            <p>Mon–Fri 7 AM–6 PM</p>
+            <p>Sat 8 AM–4 PM</p>
+            <p>Sun Closed</p>
+          </div>
+        </div>
+
+      </div>
+
+      <a
+        href="https://www.google.com/maps"
+        target="_blank"
+        class="btn primary"
+      >
+        Get Directions
+      </a>
+
+    </div>
+
+    <div class="map">
+      <iframe
+        src="https://www.google.com/maps?q=Millhaven%20OH&output=embed"
+        loading="lazy"
+        title="Garage location">
+      </iframe>
+    </div>
+
+  </section>
+
+  <footer>
+
+    <div class="footer-content">
+
+      <strong>Niraj Chary</strong>
+
+      <p>
+        Garage tools & parts counter · Built for the bench.
+      </p>
+
+      <p>
+        © 2026 Niraj Chary
+      </p>
+
+    </div>
+
+  </footer>
+
+  <a
+    href="https://wa.me/15552104477"
+    class="whatsapp"
+    target="_blank"
+    aria-label="WhatsApp"
+  >
+    💬
+  </a>
+
+  <script>
+    function enquire(productName) {
+
+      const phone = "15552104477";
+
+      const message =
+        "Hello Niraj Chary, I am interested in: "
+        + productName;
+
+      const url =
+        "https://wa.me/"
+        + phone
+        + "?text="
+        + encodeURIComponent(message);
+
+      window.open(url, "_blank");
+    }
+  </script>
+     window.chtlConfig = { chatbotId: "6738735488" } </script>
+<script async data-id="6738735488" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+
+</body>
+</html>
